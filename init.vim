@@ -9,6 +9,15 @@ set background=dark
 
 let mapleader = ","
 
+" Escape from insert and terminal modes
+inoremap jk <ESC>
+tnoremap jk <C-\><C-n>
+
+" Split terminal below
+set splitbelow
+set splitright
+nmap <leader>z :split term://zsh<CR> :res -10<CR>
+
 set clipboard^=unnamed,unnamedplus
 set t_RV=
 set t_Co=256
@@ -23,10 +32,8 @@ set ignorecase
 set incsearch
 
 set autoindent
-set shiftwidth=2
 set smartindent
 set smarttab
-set softtabstop=2
 
 set ruler
 set undolevels=1000
@@ -45,8 +52,6 @@ set signcolumn=yes
 " Plugins
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'morhetz/gruvbox'
-
 " Frontend
 Plug 'pangloss/vim-javascript'
 Plug 'elzr/vim-json'
@@ -56,6 +61,7 @@ Plug 'ap/vim-css-color'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 " .NET
+Plug 'OmniSharp/omnisharp-vim'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'tag': '0.1.155',
@@ -65,15 +71,19 @@ Plug 'ionide/Ionide-vim', {
       \ 'do':  'make fsautocomplete',
       \}
 
-Plug 'OmniSharp/omnisharp-vim'
-Plug 'dense-analysis/ale'
+" Python
+Plug 'davidhalter/jedi-vim'
 
 " General
+Plug 'morhetz/gruvbox'
+Plug 'dense-analysis/ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
@@ -101,6 +111,19 @@ let g:lightline = {
 
 " Omnisharp
 let g:ale_linters = { 'cs': ['OmniSharp'] }
+let g:OmniSharp_selector_findusages = 'fzf'
+augroup omnisharp_commands
+    autocmd!
+
+    " Contextual commands based on cursor position
+    autocmd FileType cs nmap <silent> <buffer> gd <Plug>(omnisharp_go_to_definition)
+    autocmd FileType cs nmap <silent> <buffer> <Leader>osfu <Plug>(omnisharp_find_usages)
+    autocmd FileType cs nmap <silent> <buffer> <Leader>osfi <Plug>(omnisharp_find_implementations)
+    autocmd FileType cs nmap <silent> <buffer> <Leader>osca <Plug>(omnisharp_code_actions)
+
+    autocmd FileType cs nmap <silent> <buffer> <Leader>os= <Plug>(omnisharp_code_format)
+    autocmd FileType cs nmap <silent> <buffer> <Leader>osre <Plug>(omnisharp_restart_server)
+augroup END
 
 " Gruvbox
 autocmd vimenter * ++nested colorscheme gruvbox
@@ -110,5 +133,11 @@ let g:deoplete#enable_at_startup = 1
 
 " NERDTree
 map <leader>t :NERDTreeToggle<CR>
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+map <leader>n :NERDTreeFind<CR>
+
+" Ack
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+let g:ackhighlight = 1
+nnoremap <leader>f :Ack!<Space>
