@@ -13,6 +13,9 @@ let mapleader = ","
 inoremap jk <ESC>
 tnoremap jk <C-\><C-n>
 
+" Toggle last buffer
+nnoremap <SPACE><TAB> :b#<CR>
+
 " Split terminal below
 set splitbelow
 set splitright

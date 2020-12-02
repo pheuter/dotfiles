@@ -18,6 +18,7 @@ Contains various configuration and init scripts that I use for local development
 | direnv                  | Dynamic env var loading                  |
 | diff-so-fancy           | Better git diff                          |
 | the_silver_searcher     | Grep for code search and fzf             |
+| rga                     | ripgrep + search more file types         |
 
 > `fzf` is installed via vim-plug:
 >
@@ -25,6 +26,8 @@ Contains various configuration and init scripts that I use for local development
 > vim
 > :PlugInstall
 > ```
+
+> `rga` is most accessible via the `rga-fzf` command, which will search the provided text in all compatible files, unlike `fzf` which will by default search for file names and not their contents.
 
 ## Vim shortcuts
 
