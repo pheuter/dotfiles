@@ -27,7 +27,7 @@ Contains various configuration and init scripts that I use for local development
 > :PlugInstall
 > ```
 
-> `rga` is most accessible via the `rga-fzf` command, which will search the provided text in all compatible files, unlike `fzf` which will by default search for file names and not their contents.
+> `rga` is most accessible via the `rga-fzf` command, which will search the provided text in all compatible files, unlike `fzf` which will by default search for file names and not their contents. Keyboard shortcut in shell: <kbd>Ctrl</kbd> + <kbd>f</kbd>.
 
 ## Vim shortcuts
 
@@ -57,3 +57,11 @@ Contains various configuration and init scripts that I use for local development
 | <kbd>Ctrl</kbd> + <kbd>w</kbd> , <kbd>=</kbd>                   | Resize split evenly                                |
 | <kbd>Ctrl</kbd> + <kbd>w</kbd> , <kbd>Ctrl</kbd> + <kbd>r</kbd> | Swap split windows                                 |
 | <kbd>:bd</kbd>                                                  | Delete buffer                                      |
+
+## Shell shortcuts
+
+| Shortcut                       | Description                                |
+| ------------------------------ | ------------------------------------------ |
+| <kbd>Ctrl</kbd> + <kbd>r</kbd> | Search command history                     |
+| <kbd>Ctrl</kbd> + <kbd>t</kbd> | Find file                                  |
+| <kbd>Ctrl</kbd> + <kbd>f</kbd> | Search file contents in all subdirectories |

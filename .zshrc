@@ -126,6 +126,7 @@ rga-fzf() {
 	echo "opening $file" &&
 	vim "$file"
 }
+bindkey -s '^f' 'rga-fzf\n'
 
 # Neovim
 alias vim="nvim"
