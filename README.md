@@ -5,7 +5,8 @@ Contains various configuration and init scripts that I use for local development
 ## Additional
 
 - [Dracula](https://draculatheme.com/terminal) Terminal.app theme
-- [Oh My Zsh](https://ohmyz.sh)
+- [pure](https://github.com/sindresorhus/pure) zsh prompt
+- [git completion](https://oliverspryn.medium.com/adding-git-completion-to-zsh-60f3b0e7ffbc)
 
 ### Homebrew
 
@@ -13,7 +14,7 @@ Contains various configuration and init scripts that I use for local development
 | ----------------------- | ---------------------------------------- |
 | asdf                    | Version manager for Node, Python, etc... |
 | bat                     | Better `cat`                             |
-| zsh-syntax-highlighting | Like fsh                                 |
+| zsh-syntax-highlighting | Like in fsh                              |
 | neovim                  | Vim-fork                                 |
 | direnv                  | Dynamic env var loading                  |
 | diff-so-fancy           | Better git diff                          |
