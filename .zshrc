@@ -15,10 +15,7 @@ alias vim="nvim"
 alias code="code-exploration"
 
 # editor
-export EDITOR=vim
-
-# direnv
-eval "$(direnv hook zsh)"
+export EDITOR=nvim
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -39,12 +36,7 @@ rga-fzf() {
 bindkey -s '^f' 'rga-fzf\n'
 
 # arm64 homebrew
-export PATH="/opt/homebrew/bin:$PATH"
-
-# amd64 homebrew
-function ibrew() {
-   arch --x86_64 /usr/local/bin/brew $@
-}
+eval $(/opt/homebrew/bin/brew shellenv)
 
 # completion
 unsetopt menu_complete   # do not autoselect the first completion entry
@@ -74,16 +66,24 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-
 zstyle ':completion:*:*:git:*' script ~/.zsh/git/git-completion.bash
 fpath+=$HOME/.zsh/git
 
-# brew completions
-fpath+=$(brew --prefix)/share/zsh/site-functions
-
 # pure prompt
 fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
 prompt pure
 
+# brew completions
+fpath+=$(brew --prefix)/share/zsh/site-functions
+
 # load all zsh completions, setup fpaths before this
 autoload -Uz compinit && compinit
 
 # zsh-syntax-highlighting
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# direnv
+eval "$(direnv hook zsh)"
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
