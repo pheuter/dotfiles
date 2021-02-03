@@ -2,17 +2,14 @@
 export LANG="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
 
-# ls colored output
-alias ls="ls -G"
-
 # bat
 alias cat="bat"
 
 # arm64 neovim
 alias vim="nvim"
 
-# vscode exploration
-alias code="code-exploration"
+# vscode insiders alias
+alias code="code-insiders"
 
 # editor
 export EDITOR=nvim
@@ -83,7 +80,8 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # direnv
 eval "$(direnv hook zsh)"
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# brew rubygems bin
+export PATH="/opt/homebrew/lib/ruby/gems/3.0.0/bin:$PATH"
+
+# ls colored output via `colorls` ruby gem
+alias ls="colorls -lA --sd"

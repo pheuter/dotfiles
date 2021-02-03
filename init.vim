@@ -65,11 +65,11 @@ Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 " .NET
 Plug 'OmniSharp/omnisharp-vim'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'tag': '0.1.155',
-    \ 'do': 'bash install.sh',
-    \ }
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'tag': '0.1.155',
+"     \ 'do': 'bash install.sh',
+"     \ }
 Plug 'ionide/Ionide-vim', {
       \ 'do':  'make fsautocomplete',
       \}
@@ -81,7 +81,6 @@ Plug 'davidhalter/jedi-vim'
 Plug 'morhetz/gruvbox'
 Plug 'dense-analysis/ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 Plug 'easymotion/vim-easymotion'
@@ -95,6 +94,7 @@ Plug 'preservim/nerdtree'
 call plug#end()
 
 " Fzf
+set rtp+=/opt/homebrew/opt/fzf
 nnoremap <C-b> :Buffers<CR>
 nnoremap <leader><leader> :Commands<CR>
 nnoremap <C-p> :Files<CR>
