@@ -17,19 +17,6 @@ export EDITOR=nvim
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
-rga-fzf() {
-	RG_PREFIX="rga --files-with-matches"
-	local file
-	file="$(
-		FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
-			fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
-				--phony -q "$1" \
-				--bind "change:reload:$RG_PREFIX {q}" \
-				--preview-window="70%:wrap"
-	)" &&
-	echo "opening $file" &&
-	vim "$file"
-}
 bindkey -s '^f' 'rga-fzf\n'
 
 # arm64 homebrew
@@ -83,6 +70,15 @@ eval "$(direnv hook zsh)"
 # brew rubygems bin
 export PATH="/opt/homebrew/lib/ruby/gems/3.0.0/bin:$PATH"
 
+# rust env from rustup-init install
+source $HOME/.cargo/env
+
 # colored ls output
 alias ls='ls -G'
 alias ll='ls -lG'
+
+# larger history
+export HISTSIZE=100000
+export SAVEHIST=100000
+setopt HIST_IGNORE_DUPS
+setopt EXTENDED_HISTORY

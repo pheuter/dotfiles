@@ -10,25 +10,32 @@ Contains various configuration and init scripts that I use for local development
 
 ### Homebrew
 
-| Package                 | Description                              |
-| ----------------------- | ---------------------------------------- |
-| asdf                    | Version manager for Node, Python, etc... |
-| bat                     | Better `cat`                             |
-| zsh-syntax-highlighting | Like in fsh                              |
-| neovim                  | Vim-fork                                 |
-| direnv                  | Dynamic env var loading                  |
-| diff-so-fancy           | Better git diff                          |
-| the_silver_searcher     | Grep for code search and fzf             |
-| rga                     | ripgrep + search more file types         |
-
-> `fzf` is installed via vim-plug:
->
-> ```sh
-> vim
-> :PlugInstall
-> ```
+| Package                 | Description                  |
+| ----------------------- | ---------------------------- |
+| fzf                     | CLI fuzzy finder             |
+| bat                     | Better `cat`                 |
+| zsh-syntax-highlighting | Like in fsh                  |
+| neovim                  | Vim-fork                     |
+| direnv                  | Dynamic env var loading      |
+| diff-so-fancy           | Better git diff              |
+| the_silver_searcher     | Grep for code search and fzf |
+| rg                      | Alternative to ag            |
 
 > `rga` is most accessible via the `rga-fzf` command, which will search the provided text in all compatible files, unlike `fzf` which will by default search for file names and not their contents. Keyboard shortcut in shell: <kbd>Ctrl</kbd> + <kbd>f</kbd>.
+>
+> Install instructions:
+>
+> ```sh
+> # Install rust
+> > brew install rustup-init
+> > rustup-init
+>
+> # Enable nightly toolchain
+> > rustup toolchain install nightly
+>
+> # Install nightly version of rga
+> > cargo +nightly install --git https://github.com/phiresky/ripgrep-all.git
+> ```
 
 ## Vim shortcuts
 
