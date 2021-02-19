@@ -83,5 +83,6 @@ eval "$(direnv hook zsh)"
 # brew rubygems bin
 export PATH="/opt/homebrew/lib/ruby/gems/3.0.0/bin:$PATH"
 
-# ls colored output via `colorls` ruby gem
-alias ls="colorls -lA --sd"
+# colored ls output
+alias ls='ls -G'
+alias ll='ls -lG'
