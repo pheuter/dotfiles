@@ -1,12 +1,8 @@
 # dotfiles
 
-Contains various configuration and init scripts that I use for local development
+Contains various configuration and init scripts that I use for local development.
 
 ## Additional
-
-- [Dracula](https://draculatheme.com/terminal) Terminal.app theme
-- [pure](https://github.com/sindresorhus/pure) zsh prompt
-- [git completion](https://oliverspryn.medium.com/adding-git-completion-to-zsh-60f3b0e7ffbc)
 
 ### Homebrew
 
@@ -20,22 +16,6 @@ Contains various configuration and init scripts that I use for local development
 | diff-so-fancy           | Better git diff              |
 | the_silver_searcher     | Grep for code search and fzf |
 | rg                      | Alternative to ag            |
-
-> `rga` is most accessible via the `rga-fzf` command, which will search the provided text in all compatible files, unlike `fzf` which will by default search for file names and not their contents. Keyboard shortcut in shell: <kbd>Ctrl</kbd> + <kbd>f</kbd>.
->
-> Install instructions:
->
-> ```sh
-> # Install rust
-> > brew install rustup-init
-> > rustup-init
->
-> # Enable nightly toolchain
-> > rustup toolchain install nightly
->
-> # Install nightly version of rga
-> > cargo +nightly install --git https://github.com/phiresky/ripgrep-all.git
-> ```
 
 ## Vim shortcuts
 
