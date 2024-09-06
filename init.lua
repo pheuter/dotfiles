@@ -43,7 +43,7 @@ require("lazy").setup({
       build = ":TSUpdate",
       config = function()
         require("nvim-treesitter.configs").setup({
-          ensure_installed = { "lua", "vim", "vimdoc", "markdown", "javascript", "typescript", "tsx", "svelte" },
+          ensure_installed = { "lua", "vim", "vimdoc", "markdown", "html", "css", "javascript", "typescript", "tsx", "svelte" },
           sync_install = false,
           auto_install = true,
           highlight = { enable = true },
@@ -54,15 +54,11 @@ require("lazy").setup({
     {
       "williamboman/mason.nvim",
       dependencies = {
-        "williamboman/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig",
       },
       config = function()
         require("mason").setup()
-        local servers = { "tsserver", "svelte", "tailwindcss" }
-        require("mason-lspconfig").setup {
-          ensure_installed = servers,
-        }
+        local servers = { "ts_ls", "svelte", "tailwindcss", "clojure_lsp" }
 
         local lspconfig = require("lspconfig")
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -79,11 +75,7 @@ require("lazy").setup({
         })
 
         for _, server in ipairs(servers) do
-          require("mason-lspconfig").setup_handlers({
-            [server] = function()
-              lspconfig[server].setup({ capabilities = capabilities })
-            end,
-          })
+          lspconfig[server].setup({ capabilities = capabilities })
         end
       end
     },
@@ -301,6 +293,12 @@ require("lazy").setup({
         vim.api.nvim_set_keymap('n', '<leader>gc', ':Neogit commit<CR>', { noremap = true, silent = true })
         vim.api.nvim_set_keymap('n', '<leader>gp', ':Neogit push<CR>', { noremap = true, silent = true })
         vim.api.nvim_set_keymap('n', '<leader>gl', ':Neogit pull<CR>', { noremap = true, silent = true })
+      end
+    },
+    {
+      "julienvincent/nvim-paredit",
+      config = function()
+        require("nvim-paredit").setup()
       end
     }
   },
