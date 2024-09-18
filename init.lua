@@ -58,7 +58,7 @@ require("lazy").setup({
       },
       config = function()
         require("mason").setup()
-        local servers = { "ts_ls", "svelte", "tailwindcss", "clojure_lsp" }
+        local servers = { "ts_ls", "svelte", "tailwindcss", "clojure_lsp", "pyright" }
 
         local lspconfig = require("lspconfig")
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -175,9 +175,7 @@ require("lazy").setup({
       "yetone/avante.nvim",
       event = "VeryLazy",
       lazy = false,
-      opts = {
-        -- add any opts here
-      },
+      opts = {},
       build = ":AvanteBuild", -- This is optional, recommended tho. Also note that this will block the startup for a bit since we are compiling bindings in Rust.
       dependencies = {
         "stevearc/dressing.nvim",
