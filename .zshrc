@@ -29,7 +29,11 @@ alias ls="ls -G"
 alias ducks="du -sh * | sort -hr | head"
 
 # brew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+export HOMEBREW_PREFIX="/opt/homebrew";
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+export HOMEBREW_REPOSITORY="/opt/homebrew";
+export PATH=$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH
+fpath[1,0]="/opt/homebrew/share/zsh/site-functions";
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -45,9 +49,7 @@ export PATH=$N_PREFIX/bin:$PATH
 export PATH=$(go env GOPATH)/bin:$PATH
 
 # uv
-. "$HOME/.cargo/env"
-eval "$(uv generate-shell-completion zsh)"
-export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$PATH
 export UV_PYTHON_PREFERENCE="only-managed"
 
 # postgres
